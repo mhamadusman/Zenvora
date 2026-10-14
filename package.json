@@ -1,11 +1,11 @@
 {
-  "name": "product-catalog-backend",
+  "name": "Zenvora",
   "version": "1.0.0",
-  "description": "",
+  "description": "A multi-vendor marketplace connecting buyers and sellers through online shopping, store management, product discovery, and centralized administration.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon --env-file=.env.development src/server.js",
     "seed-admin": "node src/scripts/seed.admin.script.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -13,16 +13,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WebWrite/product-catalog-backend.git"
+    "url": "https://github.com/mhamadusman/Zenvora.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/WebWrite/product-catalog-backend/issues"
+    "url": "https://github.com/mhamadusman/Zenvora.git/issues"
   },
-  "homepage": "https://github.com/WebWrite/product-catalog-backend#readme",
+  "homepage": "https://github.com/mhamadusman/Zenvora.git#readme",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
@@ -32,10 +32,13 @@
     "helmet": "^8.3.0",
     "joi": "^18.2.9",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.10.4"
+    "mongoose": "^9.10.4",
+    "nodemailer": "^10.0.16",
+    "redis": "^6.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "cross-env": "^10.1.0",
     "eslint": "^10.12.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",

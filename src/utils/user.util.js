@@ -1,12 +1,13 @@
 import { ERROR_MESSAGES } from "../constants/errorMessages.js"
 import UserRepository from "../repositories/user.rop.js"
+import Exception from "../helpers/exception.js"
 import bcrypt from "bcryptjs"
+import { HTTP_STATUS } from "../constants/statusCodes.js"
 class UserUtil {
   static async findUserWitEmail(email) {
     const user = await UserRepository.findUserWithEmail(email)
     if (!user) {
-      console.log("email does not exist")
-      return
+      throw new Exception(HTTP_STATUS.BAD_REQUEST, ERROR_MESSAGES.EMAIL_NOT_EXIST)
     }
     return user
   }
@@ -14,10 +15,10 @@ class UserUtil {
     const user = await this.findUserWitEmail(data.email)
     const isMatch = await bcrypt.compare(data.password, user.password)
     if (!isMatch) {
-      console.log("email or password is incorrect")
+      throw new Exception (HTTP_STATUS.BAD_REQUEST, ERROR_MESSAGES.UNAUTHORIZED)
     }
     if (!user.isVerified) {
-      throw new Error(ERROR_MESSAGES.VERIFY_EMAIL)
+      throw new Exception(HTTP_STATUS.BAD_REQUEST, ERROR_MESSAGES.VERIFY_EMAIL)
     }
     return user
   }

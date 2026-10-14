@@ -16,5 +16,6 @@ export const ERROR_MESSAGES = Object.freeze({
   EMAIL_ALREADY_EXISTS: "A user with this email already exists.",
   TOKEN_EXPIRED: "Token has expired. Please log in again.",
   TOKEN_INVALID: "Token is invalid or malformed.",
-  USER_NOT_FOUND: "User does not exist."
+  USER_NOT_FOUND: "User does not exist.",
+  EMAIL_NOT_EXIST: "User with this email does not exist"
 })
